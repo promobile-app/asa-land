@@ -1,0 +1,123 @@
+/* The hero sits on a capture of the product, and the product only ships dark.
+   So this one surface pins the dark token set in both page themes — every
+   colour inside still comes from a token, just a fixed set of them. */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  min-height: min(840px, 94vh);
+  display: flex;
+  align-items: center;
+  padding: 96px 0 104px;
+
+  --bg: #0a0a0a;
+  --surface: #1a1b1f;
+  --surface-2: #202020;
+  --line: #393b42;
+  --line-soft: #202020;
+  --tx: #f5f6fc;
+  --tx-2: #e9eaf2;
+  --tx-3: #9698a3;
+  --tx-4: #7c7e8a;
+  --brand-tint: rgb(71 102 255 / 0.2);
+
+  background: var(--bg);
+  color: var(--tx);
+}
+
+@media (max-width: 720px) {
+  .hero {
+    padding: 56px 0 64px;
+    min-height: 0;
+  }
+}
+
+.media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  /* The loop is a composited layer (animated transform); a plain
+     overflow:hidden does not clip it, clip-path does. */
+  clip-path: inset(0);
+  filter: saturate(0.88);
+}
+
+.video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      90deg,
+      rgb(10 10 10 / 0.985) 0%,
+      rgb(10 10 10 / 0.95) 33%,
+      rgb(10 10 10 / 0.72) 62%,
+      rgb(10 10 10 / 0.5) 100%
+    ),
+    linear-gradient(
+      0deg,
+      rgb(10 10 10 / 1) 0%,
+      rgb(10 10 10 / 0.32) 40%,
+      rgb(10 10 10 / 0.66) 100%
+    );
+}
+
+@media (max-width: 900px) {
+  /* narrow screens have no room for the text to dodge the dashboard, so the
+     background drops to a texture */
+  .scrim {
+    background: linear-gradient(
+      0deg,
+      rgb(10 10 10 / 1) 6%,
+      rgb(10 10 10 / 0.95) 45%,
+      rgb(10 10 10 / 0.975) 100%
+    );
+  }
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  /* .hero is a flex container: without this the wrap shrink-wraps its content
+     and margin-inline:auto re-centres it off the page grid. */
+  width: 100%;
+  display: grid;
+  gap: 30px;
+}
+
+.title {
+  max-width: 17ch;
+}
+
+.caption {
+  position: absolute;
+  right: 20px;
+  bottom: 18px;
+  z-index: 2;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #7c7e8a;
+  border: 1px solid #393b42;
+  border-radius: 999px;
+  padding: 5px 11px;
+  background: rgb(10 10 10 / 0.7);
+}
+
+@media (max-width: 900px) {
+  .caption {
+    display: none;
+  }
+}

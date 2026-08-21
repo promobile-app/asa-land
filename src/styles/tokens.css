@@ -1,0 +1,130 @@
+/* ============================================================================
+   Design tokens, lifted from the Promobile platform.
+
+   Source: the :root custom-property dump of
+   https://promobile-ads-production.up.railway.app (theme "dark", plus the
+   [data-theme=light] block from static/css/main.*.css).
+
+   Do not hand-edit values here. Run `npm run sync-tokens` to pull a fresh
+   dump from a platform build and diff it against this file.
+
+   Three states, deliberately:
+     :root                                   -> dark (the app's default theme)
+     prefers-color-scheme: light, unstamped  -> light
+     [data-theme="light" | "dark"]           -> explicit choice always wins
+   ========================================================================== */
+
+:root {
+  /* surfaces */
+  --bg: #0a0a0a;               /* --ds-color-page-bg   */
+  --surface: #1a1b1f;          /* --ds-color-card-bg   */
+  --surface-2: #202020;        /* --neutral-background-subtle */
+  --line: #393b42;             /* --ui-border-secondary-default */
+  --line-soft: #202020;        /* --ui-border-tertiary-default  */
+
+  /* brand */
+  --brand: #4262ff;            /* --ds-color-brand */
+  --brand-hi: #5c77ff;         /* --button-brand-primary-bg-hover */
+  --brand-soft: #7a91ff;       /* --step-active-bg */
+  --brand-tint: rgb(71 102 255 / 0.2);   /* --color-table-row-hover */
+  --brand-tint-2: rgb(71 102 255 / 0.09);
+
+  /* text */
+  --tx: #f5f6fc;               /* --ui-text-primary-default   */
+  --tx-2: #e9eaf2;             /* --ui-text-secondary-default */
+  --tx-3: #9698a3;             /* --ui-text-tertiary-default  */
+  --tx-4: #7c7e8a;             /* --ui-text-caption-default   */
+
+  /* semantic */
+  --ok: #14ce77;               /* --ds-tone-success-fg */
+  --ok-bg: #193f31;            /* --ds-tone-success-bg */
+  --warn: #f2c329;             /* --ds-tone-warning-fg */
+  --warn-bg: #453d21;          /* --ds-tone-warning-bg */
+  --rank: #f2c329;             /* the organic-rank series      */
+  --purple: #9973f8;           /* --ds-tone-03-fg */
+  --purple-bg: #332d4a;
+  --sky: #4bb7ff;              /* --ds-tone-01-fg */
+  --sky-bg: #243a4c;
+  --danger: #f25b50;           /* --ui-text-primary-error */
+  --tooltip-bg: #0a0a0a;       /* --color-chart-tooltip */
+
+  /* radii */
+  --r-sm: 8px;                 /* --ds-radius-control-small      */
+  --r-md: 10px;                /* --ds-radius-control-medium     */
+  --r-lg: 12px;                /* --ds-radius-control-large      */
+  --r-xl: 14px;                /* --ds-radius-control-extralarge */
+  --r-card: 16px;              /* --ds-radius-card */
+  --r-2xl: 20px;               /* --ds-radius-large */
+  --r-full: 999px;             /* --ds-radius-full */
+
+  /* elevation — not in the platform dump, tuned for the landing */
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.5), 0 18px 48px -24px rgb(0 0 0 / 0.9);
+
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #f5f6fc;
+    --surface: #ffffff;
+    --surface-2: #f5f6fc;
+    --line: #e9eaf2;
+    --line-soft: #eef0f8;
+
+    --brand-tint: rgb(66 98 255 / 0.12);
+    --brand-tint-2: rgb(66 98 255 / 0.05);
+
+    --tx: #202020;
+    --tx-2: #393b42;
+    --tx-3: #9698a3;
+    --tx-4: #7c7e8a;
+
+    --ok: #087443;
+    --ok-bg: #e6f7ef;
+    --warn: #8a6200;
+    --warn-bg: #fdf3dd;
+    --rank: #e08700;
+    --purple: #875bf7;
+    --purple-bg: #f2ecff;
+    --sky: #31adff;
+    --sky-bg: #eaf6ff;
+    --danger: #f04438;
+    --tooltip-bg: #ffffff;
+
+    --shadow: 0 1px 2px rgb(32 32 32 / 0.05), 0 20px 44px -26px rgb(32 32 32 / 0.32);
+
+    color-scheme: light;
+  }
+}
+
+:root[data-theme="light"] {
+  --bg: #f5f6fc;
+  --surface: #ffffff;
+  --surface-2: #f5f6fc;
+  --line: #e9eaf2;
+  --line-soft: #eef0f8;
+
+  --brand-tint: rgb(66 98 255 / 0.12);
+  --brand-tint-2: rgb(66 98 255 / 0.05);
+
+  --tx: #202020;
+  --tx-2: #393b42;
+  --tx-3: #9698a3;
+  --tx-4: #7c7e8a;
+
+  --ok: #087443;
+  --ok-bg: #e6f7ef;
+  --warn: #8a6200;
+  --warn-bg: #fdf3dd;
+  --rank: #e08700;
+  --purple: #875bf7;
+  --purple-bg: #f2ecff;
+  --sky: #31adff;
+  --sky-bg: #eaf6ff;
+  --danger: #f04438;
+  --tooltip-bg: #ffffff;
+
+  --shadow: 0 1px 2px rgb(32 32 32 / 0.05), 0 20px 44px -26px rgb(32 32 32 / 0.32);
+
+  color-scheme: light;
+}

@@ -1,0 +1,279 @@
+/* A rebuild of the product dashboard, at the exact size the real capture will
+   occupy. Colours are hard-coded on purpose: this is a picture of the app in
+   its own (dark-only) theme, not page chrome that should follow the toggle. */
+
+.mock {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1440px;
+  height: 900px;
+  --s: 1;
+  transform: translate(-50%, -50%) scale(var(--s));
+  display: flex;
+  background: #0a0a0a;
+  color: #e9eaf2;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.4;
+  backface-visibility: hidden;
+  animation: kenburns 54s ease-in-out infinite alternate;
+}
+
+@keyframes kenburns {
+  from {
+    transform: translate(-50%, -50%) scale(var(--s));
+  }
+  to {
+    transform: translate(-52.5%, -46.5%) scale(calc(var(--s) * 1.09));
+  }
+}
+
+.side {
+  width: 224px;
+  flex: none;
+  border-right: 1px solid #202020;
+  padding: 18px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 15px;
+  color: #f5f6fc;
+  padding: 0 8px;
+  letter-spacing: -0.02em;
+}
+.logo svg {
+  width: 18px;
+  height: 18px;
+  flex: none;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.nav span {
+  padding: 8px 10px;
+  border-radius: 8px;
+  color: #9698a3;
+  font-size: 13px;
+}
+.nav span.on {
+  background: rgb(71 102 255 / 0.2);
+  color: #c6d0ff;
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.chip {
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 11px;
+  border-radius: 8px;
+  border: 1px solid #393b42;
+  background: #1a1b1f;
+  color: #e9eaf2;
+  font-size: 12px;
+}
+.launch {
+  margin-left: auto;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 14px;
+  border-radius: 10px;
+  background: #4262ff;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+}
+.kpi {
+  background: #1a1b1f;
+  border: 1px solid #393b42;
+  border-radius: 16px;
+  padding: 11px 13px;
+}
+.kpiLabel {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #7c7e8a;
+}
+.kpiValue {
+  font-size: 21px;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: #f5f6fc;
+  margin-top: 4px;
+  font-variant-numeric: tabular-nums;
+}
+.kpiDelta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  margin-top: 1px;
+}
+.up {
+  color: #14ce77;
+}
+.down {
+  color: #f25b50;
+}
+
+.body {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 12px;
+}
+.card {
+  background: #1a1b1f;
+  border: 1px solid #393b42;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.cardHead {
+  padding: 11px 16px;
+  border-bottom: 1px solid #393b42;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #f2f4fc;
+}
+.cardTag {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #7c7e8a;
+}
+.miniChart {
+  display: block;
+  width: 100%;
+  height: auto;
+  padding: 8px 6px 2px;
+}
+
+.activity {
+  padding: 6px 8px;
+  display: flex;
+  flex-direction: column;
+}
+.actRow {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 9px 8px;
+  border-radius: 10px;
+}
+.actDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  margin-top: 6px;
+  flex: none;
+}
+.actText {
+  font-size: 12.5px;
+  color: #e9eaf2;
+}
+.actMeta {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #7c7e8a;
+  margin-top: 1px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1.8fr 0.55fr 0.7fr 0.7fr 0.7fr 0.6fr 0.85fr;
+  gap: 10px;
+  padding: 8px 16px;
+  border-bottom: 1px solid #202020;
+  font-size: 12.5px;
+  align-items: center;
+}
+.row:last-child {
+  border-bottom: 0;
+}
+.head {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #7c7e8a;
+  border-bottom: 1px solid #393b42;
+}
+.num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  color: #e9eaf2;
+}
+.dataRow {
+  animation: rowpulse 10s linear infinite;
+}
+@keyframes rowpulse {
+  0%,
+  90%,
+  100% {
+    background: transparent;
+  }
+  94% {
+    background: rgb(71 102 255 / 0.18);
+  }
+}
+
+.badge {
+  justify-self: start;
+  font-size: 11px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.on_ {
+  background: #193f31;
+  color: #14ce77;
+}
+.pause {
+  background: #453d21;
+  color: #f2c329;
+}
+.rule {
+  background: #212435;
+  color: #7987f5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mock,
+  .dataRow {
+    animation: none;
+  }
+}

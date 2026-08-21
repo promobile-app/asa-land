@@ -1,0 +1,134 @@
+@import "tailwindcss";
+@import "../styles/tokens.css";
+
+/* `inline` so utilities compile to var(--surface) rather than a frozen copy —
+   that is what lets a theme swap repaint without rebuilding the CSS. */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-line-soft: var(--line-soft);
+
+  --color-brand: var(--brand);
+  --color-brand-hi: var(--brand-hi);
+  --color-brand-soft: var(--brand-soft);
+  --color-brand-tint: var(--brand-tint);
+  --color-brand-tint-2: var(--brand-tint-2);
+
+  --color-tx: var(--tx);
+  --color-tx-2: var(--tx-2);
+  --color-tx-3: var(--tx-3);
+  --color-tx-4: var(--tx-4);
+
+  --color-ok: var(--ok);
+  --color-ok-bg: var(--ok-bg);
+  --color-warn: var(--warn);
+  --color-warn-bg: var(--warn-bg);
+  --color-rank: var(--rank);
+  --color-purple: var(--purple);
+  --color-purple-bg: var(--purple-bg);
+  --color-sky: var(--sky);
+  --color-sky-bg: var(--sky-bg);
+  --color-danger: var(--danger);
+  --color-tooltip: var(--tooltip-bg);
+
+  --radius-sm: var(--r-sm);
+  --radius-md: var(--r-md);
+  --radius-lg: var(--r-lg);
+  --radius-xl: var(--r-xl);
+  --radius-card: var(--r-card);
+  --radius-2xl: var(--r-2xl);
+  --radius-full: var(--r-full);
+
+  --font-sans: var(--font-rubik), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    /* explicit, from a token: a transparent body borrows the host's ground */
+    background: var(--bg);
+    color: var(--tx);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+    letter-spacing: -0.025em;
+    font-weight: 600;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--brand-hi);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: var(--brand-tint);
+    color: var(--tx);
+  }
+}
+
+@layer components {
+  .wrap {
+    max-width: 1180px;
+    margin-inline: auto;
+    padding-inline: 24px;
+  }
+
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--tx-4);
+  }
+  .eyebrow::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: var(--r-full);
+    background: var(--brand);
+    flex: none;
+  }
+
+  .h1 {
+    font-size: clamp(2.4rem, 5.6vw, 4.1rem);
+    line-height: 1.03;
+    letter-spacing: -0.035em;
+  }
+  .h2 {
+    font-size: clamp(1.75rem, 3.2vw, 2.6rem);
+    line-height: 1.1;
+  }
+  .lede {
+    font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
+    line-height: 1.55;
+    color: var(--tx-3);
+    max-width: 62ch;
+  }
+
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
+}
